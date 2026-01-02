@@ -1,17 +1,40 @@
 # Compiled
 *.elc
+native-lisp/
+eln-cache/
+
+# Personal config
+custom.el
 
 # Packaging
 .cask/
 .eask/
 .eldev/
 .keg/
+elpa/
+tree-sitter/
 
 # Built distribution
 dist/
+
+# Snippets
+snippets/private/
 
 # Backup files
 *~
 
 # Undo-tree save-files
 *.~undo-tree
+
+# Others
+auto-save-list/
+backups/
+bookmarks
+eshell/
+transient/
+tree-sitter
+org-clock-save.el
+*.db
+*.swp
+projectile-bookmarks.eld
+recentf
