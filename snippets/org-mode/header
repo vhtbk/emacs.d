@@ -1,0 +1,15 @@
+# key: header
+# name: my Org Header
+# --
+#+TITLE:       ${1:Document Title}
+#+AUTHOR:      `(or (bound-and-true-p vhtbk/user-full-name) user-full-name user-login-name)`
+#+OPTIONS:      toc:2 num:nil todo:t pri:nil tags:t
+#+PROPERTY:     header-args :eval never-export :results silent
+#+STARTUP:      overview indent inlineimages
+
+:DOC_INFO:
+- Last Updated: `(format-time-string "[%Y-%m-%d %a]")`
+- Status: #DRAFT
+:END:
+
+$0
