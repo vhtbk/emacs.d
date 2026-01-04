@@ -8,7 +8,7 @@
   :custom
   ;; Directories & files
   (org-directory "~/Documents/org/")
-  (org-agenda-file '("~/Documents/org/agenda/todo.org"))
+  (org-agenda-files '("~/Documents/org/agenda/todo.org"))
 
   ;; Basic behavior
   (org-ellipsis " ↴")
