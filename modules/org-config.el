@@ -74,6 +74,7 @@
 
 (setq initial-major-mode 'org-mode)
 (setq calendar-week-start-day 1)
+(setq initial-scratch-message nil)
 
 ;; Hide line numbers in Org buffers only
 (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
