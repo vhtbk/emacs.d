@@ -72,27 +72,26 @@ case $OS in
     fi
     echo "Installing macOS dependencies."
     brew tap d12frosted/emacs-plus
-    brew tap homebrew/cask-fonts
     brew install emacs-plus@29 --with-native-comp
     brew install coreutils fd git libgccjit pandoc ripgrep
     echo ""
     read -p "Would you like to install JetBrains and Hack fonts? (y/N): " install_font
     if [[ "$install_font" =~ ^[Yy]$ ]]; then
-      brew install --cask -y font-jetbrains-mono font-hack
+      brew install --cask font-jetbrains-mono font-hack
     else
       echo "Skipping font setup."
     fi
     echo ""
     read -p "Would you like to install pyright? (y/N): " install_pyright
     if [[ "$install_pyright" =~ ^[Yy]$ ]]; then
-      brew install -y pyright
+      brew install pyright
     else
       echo "Skipping pyright setup."
     fi
     echo ""
-    read -p "Would you like to install Marksman with Snap? (y/N): " install_marksman
+    read -p "Would you like to install Marksman? (y/N): " install_marksman
     if [[ "$install_marksman" =~ ^[Yy]$ ]]; then
-      brew install -y marksman
+      brew install marksman
     else
       echo "Skipping Marksman setup."
     fi
