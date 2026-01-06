@@ -73,28 +73,26 @@ case $OS in
     echo "Installing macOS dependencies."
     brew tap d12frosted/emacs-plus
     brew tap homebrew/cask-fonts
-    brew install emacs-plus@29 --with-native-comp --with-modern-icon
+    brew install emacs-plus@29 --with-native-comp
     brew install coreutils fd git libgccjit pandoc ripgrep
-    brew install --cask font-jetbrains-mono font-hack
     echo ""
-    read -p "Would you like to install JetBrains font? (y/N): " install_font
+    read -p "Would you like to install JetBrains and Hack fonts? (y/N): " install_font
     if [[ "$install_font" =~ ^[Yy]$ ]]; then
-      brew install --cask -y font-jetbrains-mono
+      brew install --cask -y font-jetbrains-mono font-hack
     else
       echo "Skipping font setup."
     fi
     echo ""
     read -p "Would you like to install pyright? (y/N): " install_pyright
     if [[ "$install_pyright" =~ ^[Yy]$ ]]; then
-      sudo brew install -y node pyright
-      sudo npm install -g pyright
+      brew install -y pyright
     else
       echo "Skipping pyright setup."
     fi
     echo ""
     read -p "Would you like to install Marksman with Snap? (y/N): " install_marksman
     if [[ "$install_marksman" =~ ^[Yy]$ ]]; then
-      sudo brew install -y marksman
+      brew install -y marksman
     else
       echo "Skipping Marksman setup."
     fi
@@ -105,22 +103,22 @@ echo ""
 read -p "Would you like to install Ollama for local AI features? (y/N): " install_ollama
 
 if [[ "$install_ollama" =~ ^[Yy]$ ]]; then
-    if ! command -v ollama &> /dev/null; then
-        echo "Installing Ollama."
-        if [[ "$OS" == "macos" ]]; then
-            brew install ollama
-            brew services start ollama
-        else
-            curl -fsSL https://ollama.com/install.sh | sh
-        fi
+  if ! command -v ollama &> /dev/null; then
+    echo "Installing Ollama."
+    if [[ "$OS" == "macos" ]]; then
+      brew install ollama
+      brew services start ollama
     else
-        echo "Ollama is already installed."
+      curl -fsSL https://ollama.com/install.sh | sh
     fi
+  else
+    echo "Ollama is already installed."
+  fi
 
-    echo "Pulling Llama3 model."
-    ollama pull llama3:8b
+  echo "Pulling Llama3 model."
+  ollama pull llama3:8b
 else
-    echo "Skipping AI setup."
+  echo "Skipping AI setup."
 fi
 
 echo -e "\n"
