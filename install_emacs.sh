@@ -71,8 +71,7 @@ case $OS in
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     echo "Installing macOS dependencies."
-    brew tap d12frosted/emacs-plus
-    brew install emacs-plus@29 --with-native-comp
+    brew install --cask emacs
     brew install coreutils fd git libgccjit pandoc ripgrep
     echo ""
     read -p "Would you like to install JetBrains and Hack fonts? (y/N): " install_font
