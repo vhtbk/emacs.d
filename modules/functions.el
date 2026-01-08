@@ -66,15 +66,23 @@
 (defun vhtbk/org-format-buffer ()
   "Format on save."
   (when (eq major-mode 'org-mode)
+    ;; Ignore source blocks
+    (setq-local org-fill-paragraph-ignore-working-at-source-block t)
     (save-excursion
       (goto-char (point-min))
       (let ((fill-column 80))
-        (while (not (eobp))
-          (unless (or (org-at-table-p)
-                      (org-in-src-block-p))
-            (org-fill-paragraph nil t))
-          (forward-paragraph))))))
+        (while (< (point) (point-max))
+          (cond
+           ;; Skip tables and source blocks
+           ((or (org-at-table-p)
+                (org-in-src-block-p)
+                (org-at-block-p))
+            (forward-line))
 
+           ;; Only fill if it's a normal paragraph
+           (t
+            (org-fill-paragraph nil t)
+            (forward-paragraph))))))))
 
 (defun vhtbk/open-init-file ()
   "Open init.el file quickly."
