@@ -37,4 +37,6 @@ org-clock-save.el
 *.db
 *.swp
 projectile-bookmarks.eld
+projectile-frecency.eld
+tramp
 recentf
